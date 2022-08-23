@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: aquamarine;
+}
+.form-section{    
+    width: 50%;
+    transform: translate(50%,20%);
+    text-align: center;
+    padding: 40px 0;
+    #form{
+        background-color: black;
+    }
+    #name, #surname, #salary{
+        padding: 10px 0;
+        width: 80%;
+        align-items: center;
+        text-align: center;
+        background-color: azure;
+        border: 1px solid red;
+        outline: inherit;
+    }
+    #add-user{
+        width: 80%;
+        padding: 10px 0;
+        cursor: pointer;
+        background-color: red;
+    }
+}
+.header-text{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 80px;
+    color: red;
+    font-weight: bold;
+}
+.list-section{
+    width: 80%;
+    height: 400px;
+    transform: translate(15%,20%);
+    text-align: center;
+    padding: 40px 0;
+    background-color: cadetblue;
+    table{
+        width: 100%;
+        background-color: brown;        
+        .delete-btn{
+           background-color: red;
+           border: none;
+           width: 100%;
+        }
+        .edit-btn{
+            background-color: yellow;
+           border: none;
+           width: 100%; 
+        }
+        input{
+            width: 100px;
+            text-align: center;
+        }
+    }
+}

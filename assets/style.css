@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: aquamarine;
+}
+
+.form-section {
+  width: 50%;
+  transform: translate(50%, 20%);
+  text-align: center;
+  padding: 40px 0;
+}
+.form-section #form {
+  background-color: black;
+}
+.form-section #name, .form-section #surname, .form-section #salary {
+  padding: 10px 0;
+  width: 80%;
+  align-items: center;
+  text-align: center;
+  background-color: azure;
+  border: 1px solid red;
+  outline: inherit;
+}
+.form-section #add-user {
+  width: 80%;
+  padding: 10px 0;
+  cursor: pointer;
+  background-color: red;
+}
+
+.header-text {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 80px;
+  color: red;
+  font-weight: bold;
+}
+
+.list-section {
+  width: 80%;
+  height: 400px;
+  transform: translate(15%, 20%);
+  text-align: center;
+  padding: 40px 0;
+  background-color: cadetblue;
+}
+.list-section table {
+  width: 100%;
+  background-color: brown;
+}
+.list-section table .delete-btn {
+  background-color: red;
+  border: none;
+  width: 100%;
+}
+.list-section table .edit-btn {
+  background-color: yellow;
+  border: none;
+  width: 100%;
+}
+.list-section table input {
+  width: 100px;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */

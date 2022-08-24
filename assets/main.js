@@ -11,9 +11,7 @@ if (localStorage.getItem("basket") === null) {
 sortName.addEventListener("click", () => {
     console.log("salam");
     let basketarr = JSON.parse(localStorage.getItem("basket"));
-    // // sort by value
-    // let Sorted= basketarr.sort((a, b) => a.userSa - b.userS);
-    // console.log(Sorted);
+   
 
     // sort by name   
     let sortedArr =  basketarr.sort((a, b) => {
@@ -30,11 +28,21 @@ sortName.addEventListener("click", () => {
         return 0;
     });    
     localStorage.setItem("basket", JSON.stringify(sortedArr));
-    tableAdded.innerHTML=''
+    tableAdded.innerHTML='';
     takeLocal();
 
 
 })
+filterSalary.addEventListener("click",()=>{
+    let basketarr = JSON.parse(localStorage.getItem("basket"));
+    // sort by value  
+    let sortedValue= basketarr.sort((a, b) => b.userSa - a.userSa);
+    console.log(sortedValue);
+    localStorage.setItem("basket", JSON.stringify(sortedValue));
+    tableAdded.innerHTML='';
+    takeLocal();
+})
+
 
 addBtn.addEventListener("submit", () => {
     let inputName = document.querySelector("#name").value;

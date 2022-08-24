@@ -54,11 +54,13 @@
   background-color: red;
   border: none;
   width: 100%;
+  cursor: pointer;
 }
 .list-section table .edit-btn {
   background-color: yellow;
   border: none;
   width: 100%;
+  cursor: pointer;
 }
 .list-section table input {
   width: 100px;

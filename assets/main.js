@@ -7,6 +7,7 @@ let sortName = document.querySelector(".sort-btn");
 if (localStorage.getItem("basket") === null) {
     localStorage.setItem("basket", JSON.stringify([]));
 }
+//Sorted by Name
 sortName.addEventListener("click", () => {
     console.log("salam");
     let basketarr = JSON.parse(localStorage.getItem("basket"));
@@ -32,7 +33,7 @@ sortName.addEventListener("click", () => {
 
 
 })
-
+//Sorted by Salary
 filterSalary.addEventListener("click", () => {
     let basketarr = JSON.parse(localStorage.getItem("basket"));
     // sort by value  
@@ -61,9 +62,9 @@ addBtn.addEventListener("submit", () => {
         tableAdded.innerHTML += `
     <tr  >
     <td> <input id="content-id" value="${inputId}"  disabled type="text"> </td>
-    <td> <input id="content-name" value="${inputName}" onchange="updateName(event.target,${inputId})" disabled type="text"> </td>
-    <td><input id="content-surname" value="${inputSurname}" type="text" disabled ></td>
-    <td> <input  id="content-salary" type="number" value="${inputSalary}" disabled ></td>
+    <td> <input id="content-name" value="${inputName}" onchange="updateName(event.target,'${inputId}')" disabled type="text"> </td>
+    <td><input id="content-surname" value="${inputSurname}" onchange="updateSName(event.target,'${inputId}')" type="text" disabled ></td>
+    <td> <input  id="content-salary" onchange="updateSalary(event.target,'${inputId}')" type="number" value="${inputSalary}" disabled ></td>
     <td><button class="delete-btn" onClick="employeeDelete(event)" >Delete</button> </td>
     <td><button class="edit-btn" onClick="employeeEdit(event)" >Edit</button> </td>
     </tr> 
@@ -111,7 +112,7 @@ let takeLocal = () => {
         tableAdded.innerHTML += `
     <tr  >
     <td> <input id="content-id" value="${user.id}" disabled type="text"> </td>
-    <td> <input id="content-name" value="${user.userN}" onchange="updateName(event.target,${user.id})" disabled type="text"> </td>
+    <td> <input id="content-name" value="${user.userN}" onchange="updateName(event.target,'${user.id}')" disabled type="text"> </td>
     <td><input id="content-surname" value="${user.userS}" type="text" disabled ></td>
     <td> <input  id="content-salary" type="number" value="${user.userSa}" disabled ></td>
     <td><button class="delete-btn" onClick="employeeDelete(event)" >Delete</button> </td>
@@ -122,6 +123,28 @@ let takeLocal = () => {
 
 }
 let updateName = (ev, id) => {
+    chanegeName=ev.value;
+    console.log(chanegeName); 
+    let basketarr = JSON.parse(localStorage.getItem("basket"));
+    let result=basketarr.find((user)=> user.id==id);
+    result.userN=chanegeName;   
+    localStorage.setItem("basket", JSON.stringify(basketarr));
+   
+}
+let updateSName = (ev, id) =>{
     console.log(ev);
+    chanegesName=ev.value; 
+    console.log(chanegesName);    
+    let basketarr = JSON.parse(localStorage.getItem("basket"));
+    let result=basketarr.find((user)=> user.id==id);
+    result.userS=chanegeName;   
+    localStorage.setItem("basket", JSON.stringify(basketarr));
+}
+let updateSalary=(ev,id)=>{
+    chanegeName=ev.value; 
+    let basketarr = JSON.parse(localStorage.getItem("basket"));
+    let result=basketarr.find((user)=> user.id==id);
+    result.userN=chanegeName;   
+    localStorage.setItem("basket", JSON.stringify(basketarr));
 }
 takeLocal();

@@ -113,8 +113,8 @@ let takeLocal = () => {
     <tr  >
     <td> <input id="content-id" value="${user.id}" disabled type="text"> </td>
     <td> <input id="content-name" value="${user.userN}" onchange="updateName(event.target,'${user.id}')" disabled type="text"> </td>
-    <td><input id="content-surname" value="${user.userS}" type="text" disabled ></td>
-    <td> <input  id="content-salary" type="number" value="${user.userSa}" disabled ></td>
+    <td><input id="content-surname" value="${user.userS}" onchange="updateSName(event.target,'${user.id}')" type="text" disabled ></td>
+    <td> <input  id="content-salary" onchange="updateSalary(event.target,'${user.id}')"  type="number" value="${user.userSa}" disabled ></td>
     <td><button class="delete-btn" onClick="employeeDelete(event)" >Delete</button> </td>
     <td><button class="edit-btn" onClick="employeeEdit(event)" >Edit</button> </td>
     </tr> 
@@ -123,8 +123,7 @@ let takeLocal = () => {
 
 }
 let updateName = (ev, id) => {
-    chanegeName=ev.value;
-    console.log(chanegeName); 
+    chanegeName=ev.value;     
     let basketarr = JSON.parse(localStorage.getItem("basket"));
     let result=basketarr.find((user)=> user.id==id);
     result.userN=chanegeName;   
@@ -133,8 +132,7 @@ let updateName = (ev, id) => {
 }
 let updateSName = (ev, id) =>{
     console.log(ev);
-    chanegesName=ev.value; 
-    console.log(chanegesName);    
+    chanegeName=ev.value;         
     let basketarr = JSON.parse(localStorage.getItem("basket"));
     let result=basketarr.find((user)=> user.id==id);
     result.userS=chanegeName;   
@@ -144,7 +142,7 @@ let updateSalary=(ev,id)=>{
     chanegeName=ev.value; 
     let basketarr = JSON.parse(localStorage.getItem("basket"));
     let result=basketarr.find((user)=> user.id==id);
-    result.userN=chanegeName;   
+    result.userSa=chanegeName;   
     localStorage.setItem("basket", JSON.stringify(basketarr));
 }
 takeLocal();

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,23 +9,38 @@
     <script defer src="./assets/main.js"></script>
     <title>Employee list</title>
 </head>
+
 <body>
     <header>
-        <h1 class="header-text" >Employee list</h1>
+        <h1 class="header-text">Employee list</h1>
     </header>
     <main>
         <section class="form-section">
             <form id="form" action="#">
-                <input  id="empId" type="text" placeholder="Please, enter personal number">
+                <input id="empId" type="text" placeholder="Please, enter personal number">
                 <input id="name" placeholder="Please, enter name" type="text">
                 <input id="surname" placeholder="Please, enter surname" type="text">
-                <input  id="salary" type="number" placeholder="Please, enter salary">
-                <button id="add-user" >Add</button>
+                <input id="salary" type="number" placeholder="Please, enter salary">
+                <button id="add-user">Add</button>
             </form>
         </section>
         <section class="list-section">
-            
+            <table>
+                <tr>
+                    <th>Personal number</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Salary</th>
+                    <th><button class="sort-btn">Sort</button></th>
+                    <th><button id="filter-btn">Filter</button></th>
+                </tr>
+            </table>
+            <table id="adedtable" >
+               
+                
+            </table>
         </section>
     </main>
 </body>
+
 </html>

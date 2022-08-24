@@ -1,7 +1,6 @@
 let employeeList = document.querySelector(".list-section");
 let addBtn = document.querySelector('#form');
 let tableAdded = document.querySelector("#adedtable");
-
 let filterSalary = document.querySelector("#filter-btn");
 let sortName = document.querySelector(".sort-btn");
 //create empty array localstorage
@@ -11,10 +10,10 @@ if (localStorage.getItem("basket") === null) {
 sortName.addEventListener("click", () => {
     console.log("salam");
     let basketarr = JSON.parse(localStorage.getItem("basket"));
-   
+
 
     // sort by name   
-    let sortedArr =  basketarr.sort((a, b) => {
+    let sortedArr = basketarr.sort((a, b) => {
         const nameA = a.userN.toUpperCase(); // ignore upper and lowercase
         const nameB = b.userN.toUpperCase(); // ignore upper and lowercase
         if (nameA < nameB) {
@@ -26,23 +25,23 @@ sortName.addEventListener("click", () => {
 
         // names must be equal
         return 0;
-    });    
+    });
     localStorage.setItem("basket", JSON.stringify(sortedArr));
-    tableAdded.innerHTML='';
+    tableAdded.innerHTML = '';
     takeLocal();
 
 
 })
-filterSalary.addEventListener("click",()=>{
+
+filterSalary.addEventListener("click", () => {
     let basketarr = JSON.parse(localStorage.getItem("basket"));
     // sort by value  
-    let sortedValue= basketarr.sort((a, b) => b.userSa - a.userSa);
+    let sortedValue = basketarr.sort((a, b) => b.userSa - a.userSa);
     console.log(sortedValue);
     localStorage.setItem("basket", JSON.stringify(sortedValue));
-    tableAdded.innerHTML='';
+    tableAdded.innerHTML = '';
     takeLocal();
 })
-
 
 addBtn.addEventListener("submit", () => {
     let inputName = document.querySelector("#name").value;
@@ -61,8 +60,8 @@ addBtn.addEventListener("submit", () => {
         basket.push(listData);
         tableAdded.innerHTML += `
     <tr  >
-    <td> <input id="content-id" value="${inputId}" disabled type="text"> </td>
-    <td> <input id="content-name" value="${inputName}" disabled type="text"> </td>
+    <td> <input id="content-id" value="${inputId}"  disabled type="text"> </td>
+    <td> <input id="content-name" value="${inputName}" onchange="updateName(event.target,${inputId})" disabled type="text"> </td>
     <td><input id="content-surname" value="${inputSurname}" type="text" disabled ></td>
     <td> <input  id="content-salary" type="number" value="${inputSalary}" disabled ></td>
     <td><button class="delete-btn" onClick="employeeDelete(event)" >Delete</button> </td>
@@ -91,17 +90,20 @@ let employeeDelete = (event) => {
     parent.remove();
     localStorage.setItem("basket", JSON.stringify(basketarr));
 }
-let employeeEdit = (event) => {
+function employeeEdit(event) {
+    let basketarr = JSON.parse(localStorage.getItem("basket"));
     let parent = event.target.parentElement.parentElement;
     inputList = parent.querySelectorAll("input");
     inputList.forEach(input => {
         let disabledInp = input.getAttribute("disabled");
         if (disabledInp != "" && disabledInp == null) {
             input.setAttribute("disabled", "disabled");
-        } else {
+        }
+        else {
             input.removeAttribute("disabled");
         }
     });
+
 }
 let takeLocal = () => {
     let basketarr = JSON.parse(localStorage.getItem("basket"));
@@ -109,7 +111,7 @@ let takeLocal = () => {
         tableAdded.innerHTML += `
     <tr  >
     <td> <input id="content-id" value="${user.id}" disabled type="text"> </td>
-    <td> <input id="content-name" value="${user.userN}" disabled type="text"> </td>
+    <td> <input id="content-name" value="${user.userN}" onchange="updateName(event.target,${user.id})" disabled type="text"> </td>
     <td><input id="content-surname" value="${user.userS}" type="text" disabled ></td>
     <td> <input  id="content-salary" type="number" value="${user.userSa}" disabled ></td>
     <td><button class="delete-btn" onClick="employeeDelete(event)" >Delete</button> </td>
@@ -118,5 +120,8 @@ let takeLocal = () => {
    `
     })
 
+}
+let updateName = (ev, id) => {
+    console.log(ev);
 }
 takeLocal();
